@@ -3,7 +3,45 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEOW", "GEOW\GEOW\GEOW.csproj", "{F471701B-148B-4BC1-8ED0-57BB337D52ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEOWObj", "GEOWObj\GEOWObj\GEOWObj.csproj", "{C10C37DF-BDB5-4C63-BEAC-38C61A749F7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEOWNeg", "GEOWNeg\GEOWNeg\GEOWNeg.csproj", "{4BE54911-2511-4416-ADE9-7918D3EEC828}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEOWData", "GEOWData\GEOWData\GEOWData.csproj", "{F87EDA4E-ED0C-429E-BB84-76C98503235C}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "GEOWDB", "GEOWDB\GEOWDB\GEOWDB.sqlproj", "{ECA4D2D7-7BDA-414F-9243-660F3A33E79F}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F471701B-148B-4BC1-8ED0-57BB337D52ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F471701B-148B-4BC1-8ED0-57BB337D52ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F471701B-148B-4BC1-8ED0-57BB337D52ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F471701B-148B-4BC1-8ED0-57BB337D52ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C10C37DF-BDB5-4C63-BEAC-38C61A749F7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C10C37DF-BDB5-4C63-BEAC-38C61A749F7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C10C37DF-BDB5-4C63-BEAC-38C61A749F7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C10C37DF-BDB5-4C63-BEAC-38C61A749F7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BE54911-2511-4416-ADE9-7918D3EEC828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BE54911-2511-4416-ADE9-7918D3EEC828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BE54911-2511-4416-ADE9-7918D3EEC828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE54911-2511-4416-ADE9-7918D3EEC828}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F87EDA4E-ED0C-429E-BB84-76C98503235C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F87EDA4E-ED0C-429E-BB84-76C98503235C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F87EDA4E-ED0C-429E-BB84-76C98503235C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F87EDA4E-ED0C-429E-BB84-76C98503235C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA4D2D7-7BDA-414F-9243-660F3A33E79F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA4D2D7-7BDA-414F-9243-660F3A33E79F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA4D2D7-7BDA-414F-9243-660F3A33E79F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ECA4D2D7-7BDA-414F-9243-660F3A33E79F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA4D2D7-7BDA-414F-9243-660F3A33E79F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA4D2D7-7BDA-414F-9243-660F3A33E79F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
