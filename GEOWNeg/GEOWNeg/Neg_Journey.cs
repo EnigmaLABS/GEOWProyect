@@ -10,11 +10,11 @@ namespace GEOWNeg
 {
     public class Neg_Journey : INeg_Journey
     {
-        private IJourney _neg_journey;
+        private IJourney _data_journey;
 
-        public Neg_Journey(IJourney p_neg_journey)
+        public Neg_Journey(IJourney p_data_journey)
         {
-            _neg_journey = p_neg_journey;
+            _data_journey = p_data_journey;
         }
 
         public Int64 New()
@@ -23,7 +23,7 @@ namespace GEOWNeg
 
             try
             {
-                res = _neg_journey.New();
+                res = _data_journey.New();
             }
             catch (Exception ex)
             {

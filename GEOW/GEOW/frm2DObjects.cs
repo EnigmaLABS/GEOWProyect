@@ -316,6 +316,12 @@ namespace GEOW
             }
         }
 
+        private void cmdConsultas_Click(object sender, EventArgs e)
+        {
+            frmReport2DObjects _frm = new frmReport2DObjects();
+            _frm.Show();
+        }
+
         #endregion
 
 
@@ -582,6 +588,7 @@ namespace GEOW
         }
 
         #endregion
+
 
     }
 }

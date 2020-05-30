@@ -47,7 +47,11 @@
     <Compile Include="contracts\INeg_Actions.cs" />
     <Compile Include="contracts\INeg_BufferPositions.cs" />
     <Compile Include="contracts\INeg_Journey.cs" />
+    <Compile Include="contracts\INeg_Quering.cs" />
+    <Compile Include="contracts\IReading.cs" />
     <Compile Include="contracts\IRecording.cs" />
+    <Compile Include="DTO\GetJourneyObjectsDTO.cs" />
+    <Compile Include="DTO\GetJourneysDTO.cs" />
     <Compile Include="DTO\InsertPositionDTO.cs" />
     <Compile Include="infoObjects.cs" />
     <Compile Include="PointObj.cs" />

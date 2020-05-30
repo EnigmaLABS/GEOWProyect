@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm2DObjects));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.picOut = new System.Windows.Forms.PictureBox();
+            this.cmdConsultas = new System.Windows.Forms.Button();
             this.cmdGrabar = new System.Windows.Forms.Button();
             this.lblGrabando = new System.Windows.Forms.Label();
             this.panelControlDireccion = new System.Windows.Forms.Panel();
@@ -100,6 +101,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.cmdConsultas);
             this.splitContainer1.Panel2.Controls.Add(this.cmdGrabar);
             this.splitContainer1.Panel2.Controls.Add(this.lblGrabando);
             this.splitContainer1.Panel2.Controls.Add(this.panelControlDireccion);
@@ -146,6 +148,17 @@
             this.picOut.Size = new System.Drawing.Size(1114, 1007);
             this.picOut.TabIndex = 1;
             this.picOut.TabStop = false;
+            // 
+            // cmdConsultas
+            // 
+            this.cmdConsultas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdConsultas.Location = new System.Drawing.Point(252, 785);
+            this.cmdConsultas.Name = "cmdConsultas";
+            this.cmdConsultas.Size = new System.Drawing.Size(95, 34);
+            this.cmdConsultas.TabIndex = 50;
+            this.cmdConsultas.Text = "Consultas";
+            this.cmdConsultas.UseVisualStyleBackColor = true;
+            this.cmdConsultas.Click += new System.EventHandler(this.cmdConsultas_Click);
             // 
             // cmdGrabar
             // 
@@ -266,7 +279,7 @@
             // cmdComportamiento
             // 
             this.cmdComportamiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdComportamiento.Location = new System.Drawing.Point(252, 785);
+            this.cmdComportamiento.Location = new System.Drawing.Point(252, 825);
             this.cmdComportamiento.Name = "cmdComportamiento";
             this.cmdComportamiento.Size = new System.Drawing.Size(95, 34);
             this.cmdComportamiento.TabIndex = 16;
@@ -589,8 +602,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1477, 1007);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "frm2DObjects";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2D Scenes";
@@ -661,6 +675,7 @@
         private System.Windows.Forms.Label lblGrabando;
         private System.Windows.Forms.Button cmdGrabar;
         private System.Windows.Forms.Timer timerTransferPositions;
+        private System.Windows.Forms.Button cmdConsultas;
     }
 }
 

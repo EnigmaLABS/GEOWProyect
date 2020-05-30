@@ -44,6 +44,7 @@
     <Compile Include="Neg_Actions.cs" />
     <Compile Include="Neg_BufferPositions.cs" />
     <Compile Include="Neg_Journey.cs" />
+    <Compile Include="Neg_Quering.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
