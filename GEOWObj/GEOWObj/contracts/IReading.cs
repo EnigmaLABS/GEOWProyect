@@ -12,5 +12,6 @@ namespace GEOWObj.contracts
     {
         List<GetJourneysDTO> GetJourneys();
         List<GetJourneyObjectsDTO> GetJourneyObjects(Int64 idJourney);
+        GetTotalesDTO GetTotales();
     }
 }

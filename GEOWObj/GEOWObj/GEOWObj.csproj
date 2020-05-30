@@ -52,6 +52,7 @@
     <Compile Include="contracts\IRecording.cs" />
     <Compile Include="DTO\GetJourneyObjectsDTO.cs" />
     <Compile Include="DTO\GetJourneysDTO.cs" />
+    <Compile Include="DTO\GetTotalesDTO.cs" />
     <Compile Include="DTO\InsertPositionDTO.cs" />
     <Compile Include="infoObjects.cs" />
     <Compile Include="PointObj.cs" />

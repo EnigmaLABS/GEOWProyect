@@ -69,6 +69,8 @@
     <Folder Include="write\Stored Procedures\" />
     <Folder Include="dbo\User Defined Types\" />
     <Folder Include="Security\" />
+    <Folder Include="comparer" />
+    <Folder Include="read\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Journeys.sql" />
@@ -91,5 +93,12 @@
     <Build Include="dbo\User Defined Types\typePositions.sql" />
     <Build Include="Security\read.sql" />
     <Build Include="Security\write.sql" />
+    <Build Include="read\Tables\Journeys_Points.sql" />
+    <Build Include="read\Stored Procedures\GetTotales.sql" />
+    <Build Include="read\Stored Procedures\GetJourneys.sql" />
+    <Build Include="read\Stored Procedures\GetJourneyObjects.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="comparer\DB to Proyect.scmp" />
   </ItemGroup>
 </Project>

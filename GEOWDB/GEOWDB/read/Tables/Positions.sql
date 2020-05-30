@@ -11,3 +11,11 @@
     CONSTRAINT [FK_Positions_Points] FOREIGN KEY ([idPoint]) REFERENCES [dbo].[Points] ([idPoint])
 );
 
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_Journeys]
+    ON [read].[Positions]([idJourney] ASC)
+    INCLUDE([idPoint]);
+

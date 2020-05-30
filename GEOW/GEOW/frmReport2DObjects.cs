@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,6 +25,9 @@ namespace GEOW
         private List<GetJourneyObjectsDTO> ObjectsActual;
         private GetJourneysDTO SelectedJourney;
 
+        private GetTotalesDTO Totales;
+        private DateTime MuestraXaVelocidad;
+
         public frmReport2DObjects()
         {
             InitializeComponent();
@@ -39,8 +43,11 @@ namespace GEOW
             propiedadListView.SetValue(lstObjetos, true, null);
 
             GetTrayectos();
+            GetTotales();
 
             timerTrayectos.Enabled = true;
+            Thread.Sleep(666);
+            timerTotales.Enabled = true;
         }
 
         private void lstTrayectos_SelectedIndexChanged(object sender, EventArgs e)
@@ -151,33 +158,6 @@ namespace GEOW
             //Finalmente dejamos reflejados los cambios
             if (HayCambiosEnTrayectos) { JourneysActual = new List<GetJourneysDTO>(_journeys); }
 
-
-            //------------------------------------------------------------------------------
-            //------------------------------------------------------------------------------
-            //------------------------------------------------------------------------------
-            //if (JourneysActual == null || !(_journeys.SequenceEqual(JourneysActual)))
-            //{
-            //    if (!nuevostrayectos && (SelectedJourney != null && SelectedJourney.numObjetos == _obj_negQ.GetJourneyObjects(SelectedJourney.idJourney).Count()))
-            //    {
-            //        //solo actualiza las coordenadas
-            //        var LstIt = lstTrayectos.FindItemWithText(SelectedJourney.dtInicio.ToShortDateString() + " " + SelectedJourney.dtInicio.ToLongTimeString());
-
-            //        if (LstIt != null)
-            //        {
-            //            LstIt.SubItems[2].Text = _journeys.Where(j => j.idJourney == SelectedJourney.idJourney).First().numCoordenadasTotal.ToString();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        MuestraTrayectos(_journeys);
-
-            //        if (SelectedJourney != null && SelectedJourney.numObjetos != ObjectsActual.Count)
-            //        {
-            //            GetObjetos(SelectedJourney.idJourney);
-            //        }
-            //    }
-            //}
-
         }
 
         private void MuestraTrayectos(List<GetJourneysDTO> _journeys)
@@ -229,6 +209,39 @@ namespace GEOW
             }
         }
 
+        private void GetTotales()
+        {
+            GetTotalesDTO _totales = _obj_negQ.GetTotales();
+
+            if (lblTotalCoordenadas.Text != _totales.TotalCoordenadas.ToString())
+            {
+                lblTotalCoordenadas.Text = _totales.TotalCoordenadas.ToString();
+            }
+
+            if (lblTotalFiguras.Text != _totales.TotalPoints.ToString())
+            {
+                lblTotalFiguras.Text = _totales.TotalPoints.ToString();
+            }
+
+            lblPromedio1.Text = _totales.PromedioCoordenadasFiguras.ToString();
+            lblPromedio2.Text = _totales.PromedioCoordenadasTrayectos.ToString();
+
+            //calcula la velocidad
+            DateTime _dtActual = DateTime.Now;
+
+            if (Totales != null && MuestraXaVelocidad != null)
+            {
+                TimeSpan _ts = _dtActual - MuestraXaVelocidad;
+
+                double velocidad = ((_totales.TotalCoordenadas - Totales.TotalCoordenadas) / _ts.TotalSeconds) * 60;
+
+                lblVelocidad.Text = velocidad.ToString();
+            }
+
+            Totales = _totales;
+            MuestraXaVelocidad = _dtActual;
+        }
+
         private void timerTrayectos_Tick(object sender, EventArgs e)
         {
             GetTrayectos();
@@ -240,6 +253,11 @@ namespace GEOW
             {
                 GetObjetos(SelectedJourney.idJourney);
             }
+        }
+
+        private void timerTotales_Tick(object sender, EventArgs e)
+        {
+            GetTotales();
         }
     }
 }

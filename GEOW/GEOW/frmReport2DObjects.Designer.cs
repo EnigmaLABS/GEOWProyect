@@ -48,6 +48,17 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timerTrayectos = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblTotalFiguras = new System.Windows.Forms.Label();
+            this.lblPromedio1 = new System.Windows.Forms.Label();
+            this.lblPromedio2 = new System.Windows.Forms.Label();
+            this.lblTotalCoordenadas = new System.Windows.Forms.Label();
+            this.timerTotales = new System.Windows.Forms.Timer(this.components);
+            this.lblVelocidad = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lstTrayectos
@@ -204,14 +215,140 @@
             // 
             // timerTrayectos
             // 
-            this.timerTrayectos.Interval = 15000;
+            this.timerTrayectos.Interval = 10000;
             this.timerTrayectos.Tick += new System.EventHandler(this.timerTrayectos_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(755, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 29);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Total figuras:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(754, 117);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(264, 29);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Promedio coordenadas / figura:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(755, 224);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(163, 29);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Total coordenadas:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(755, 168);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(281, 29);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Promedio coordenadas / trayecto:";
+            // 
+            // lblTotalFiguras
+            // 
+            this.lblTotalFiguras.AutoSize = true;
+            this.lblTotalFiguras.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalFiguras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblTotalFiguras.Location = new System.Drawing.Point(1075, 70);
+            this.lblTotalFiguras.Name = "lblTotalFiguras";
+            this.lblTotalFiguras.Size = new System.Drawing.Size(23, 29);
+            this.lblTotalFiguras.TabIndex = 11;
+            this.lblTotalFiguras.Text = "0";
+            // 
+            // lblPromedio1
+            // 
+            this.lblPromedio1.AutoSize = true;
+            this.lblPromedio1.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPromedio1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblPromedio1.Location = new System.Drawing.Point(1075, 117);
+            this.lblPromedio1.Name = "lblPromedio1";
+            this.lblPromedio1.Size = new System.Drawing.Size(23, 29);
+            this.lblPromedio1.TabIndex = 12;
+            this.lblPromedio1.Text = "0";
+            // 
+            // lblPromedio2
+            // 
+            this.lblPromedio2.AutoSize = true;
+            this.lblPromedio2.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPromedio2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblPromedio2.Location = new System.Drawing.Point(1075, 168);
+            this.lblPromedio2.Name = "lblPromedio2";
+            this.lblPromedio2.Size = new System.Drawing.Size(23, 29);
+            this.lblPromedio2.TabIndex = 13;
+            this.lblPromedio2.Text = "0";
+            // 
+            // lblTotalCoordenadas
+            // 
+            this.lblTotalCoordenadas.AutoSize = true;
+            this.lblTotalCoordenadas.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalCoordenadas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblTotalCoordenadas.Location = new System.Drawing.Point(1075, 224);
+            this.lblTotalCoordenadas.Name = "lblTotalCoordenadas";
+            this.lblTotalCoordenadas.Size = new System.Drawing.Size(23, 29);
+            this.lblTotalCoordenadas.TabIndex = 14;
+            this.lblTotalCoordenadas.Text = "0";
+            // 
+            // timerTotales
+            // 
+            this.timerTotales.Enabled = true;
+            this.timerTotales.Interval = 12000;
+            this.timerTotales.Tick += new System.EventHandler(this.timerTotales_Tick);
+            // 
+            // lblVelocidad
+            // 
+            this.lblVelocidad.AutoSize = true;
+            this.lblVelocidad.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVelocidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblVelocidad.Location = new System.Drawing.Point(1075, 279);
+            this.lblVelocidad.Name = "lblVelocidad";
+            this.lblVelocidad.Size = new System.Drawing.Size(23, 29);
+            this.lblVelocidad.TabIndex = 16;
+            this.lblVelocidad.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label8.Location = new System.Drawing.Point(755, 279);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(199, 29);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Velocidad (coord / min):";
             // 
             // frmReport2DObjects
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1394, 819);
+            this.Controls.Add(this.lblVelocidad);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lblTotalCoordenadas);
+            this.Controls.Add(this.lblPromedio2);
+            this.Controls.Add(this.lblPromedio1);
+            this.Controls.Add(this.lblTotalFiguras);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lstCoordenadas);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lstObjetos);
@@ -251,5 +388,16 @@
         private System.Windows.Forms.ColumnHeader chAncho;
         private System.Windows.Forms.ColumnHeader chTotalCoordenadas;
         private System.Windows.Forms.Timer timerTrayectos;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblTotalFiguras;
+        private System.Windows.Forms.Label lblPromedio1;
+        private System.Windows.Forms.Label lblPromedio2;
+        private System.Windows.Forms.Label lblTotalCoordenadas;
+        private System.Windows.Forms.Timer timerTotales;
+        private System.Windows.Forms.Label lblVelocidad;
+        private System.Windows.Forms.Label label8;
     }
 }

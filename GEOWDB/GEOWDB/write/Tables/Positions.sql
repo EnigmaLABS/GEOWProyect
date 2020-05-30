@@ -12,3 +12,11 @@
     CONSTRAINT [PK_Positions] PRIMARY KEY CLUSTERED ([idPosition] ASC)
 );
 
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_GUIDs]
+    ON [write].[Positions]([GUIDObject] ASC)
+    INCLUDE([idJourney]);
+

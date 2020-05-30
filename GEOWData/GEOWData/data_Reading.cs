@@ -91,6 +91,36 @@ namespace GEOWData
             return res;
         }
 
+        public GetTotalesDTO GetTotales()
+        {
+            GetTotalesDTO res = new GetTotalesDTO();
 
+            SqlConnection cnx = new SqlConnection(cnx_str);
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Connection = cnx;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "[read].GetTotales";
+
+            cnx.Open();
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                res = new GetTotalesDTO()
+                {
+                    TotalCoordenadas = Int64.Parse(reader["TotalCoordenadas"].ToString()),
+                    TotalPoints = Int64.Parse(reader["TotalPoints"].ToString()),
+                    TotalTrayectos = Int64.Parse(reader["TotalTrayectos"].ToString())
+                };
+            }
+
+            reader.Close();
+
+            cnx.Close();
+
+            return res;
+        }
     }
 }

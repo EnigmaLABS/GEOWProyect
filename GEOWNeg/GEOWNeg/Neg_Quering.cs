@@ -49,5 +49,21 @@ namespace GEOWNeg
 
             return res.OrderBy(dt => dt.OBJDesc).ToList();
         }
+
+        public GetTotalesDTO GetTotales()
+        {
+            GetTotalesDTO res = new GetTotalesDTO();
+
+            try
+            {
+                res = _data_reading.GetTotales();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return res;
+        }
     }
 }

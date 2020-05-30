@@ -38,6 +38,17 @@ begin
 		where 
 		p.idPoint is null
 
+		--A continuación graba los nuevos objetos asociados al correspondiente trayecto
+		insert into [read].[Journeys_Points] (idJourney, idPoint)
+		select distinct pos.idJourney, p.idPoint
+		from
+		write.Positions pos with(nolock)
+		inner join #guids g on pos.GUIDObject = g.guidobject
+		inner join [dbo].[Points] p on pos.GUIDObject = p.GUIDObject
+		where
+		not exists (select 1 from [read].[Journeys_Points] sub where sub.idJourney = pos.idJourney and sub.idPoint = p.idPoint)
+
+		--Finalmente volcamos las posiciones en el modelo de lectura
 		ALTER TABLE [read].Positions
 		NOCHECK CONSTRAINT FK_Positions_Points
 
