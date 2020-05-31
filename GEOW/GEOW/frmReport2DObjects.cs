@@ -25,8 +25,10 @@ namespace GEOW
         private List<GetJourneyObjectsDTO> ObjectsActual;
         private GetJourneysDTO SelectedJourney;
 
+        //control de velocidad
         private GetTotalesDTO Totales;
         private DateTime MuestraXaVelocidad;
+        private int vecescero = 0;
 
         public frmReport2DObjects()
         {
@@ -233,12 +235,31 @@ namespace GEOW
             {
                 TimeSpan _ts = _dtActual - MuestraXaVelocidad;
 
-                double velocidad = ((_totales.TotalCoordenadas - Totales.TotalCoordenadas) / _ts.TotalSeconds) * 60;
+                double velocidad = Math.Round(((_totales.TotalCoordenadas - Totales.TotalCoordenadas) / _ts.TotalSeconds), 0);
 
-                lblVelocidad.Text = velocidad.ToString();
+                if (velocidad == 0)
+                {
+                    vecescero++;
+
+                    if (vecescero == 3)
+                    {
+                        vecescero = 0;
+
+                        lblVelocidad.Text = velocidad.ToString();
+                    }
+                }
+                else
+                {
+
+                    lblVelocidad.Text = velocidad.ToString();
+                }
             }
 
-            Totales = _totales;
+            Totales = new GetTotalesDTO()
+            {
+                TotalCoordenadas = _totales.TotalCoordenadas
+            };
+
             MuestraXaVelocidad = _dtActual;
         }
 

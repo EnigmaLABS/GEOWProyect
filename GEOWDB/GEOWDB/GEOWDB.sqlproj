@@ -71,6 +71,7 @@
     <Folder Include="Security\" />
     <Folder Include="comparer" />
     <Folder Include="read\Stored Procedures\" />
+    <Folder Include="scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Journeys.sql" />
@@ -100,5 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="comparer\DB to Proyect.scmp" />
+    <None Include="scripts\cargainicial.sql" />
   </ItemGroup>
 </Project>

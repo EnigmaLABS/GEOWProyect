@@ -309,7 +309,7 @@
             // timerTotales
             // 
             this.timerTotales.Enabled = true;
-            this.timerTotales.Interval = 12000;
+            this.timerTotales.Interval = 15000;
             this.timerTotales.Tick += new System.EventHandler(this.timerTotales_Tick);
             // 
             // lblVelocidad
@@ -330,9 +330,9 @@
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label8.Location = new System.Drawing.Point(755, 279);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(199, 29);
+            this.label8.Size = new System.Drawing.Size(197, 29);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Velocidad (coord / min):";
+            this.label8.Text = "Velocidad (coord / seg):";
             // 
             // frmReport2DObjects
             // 
