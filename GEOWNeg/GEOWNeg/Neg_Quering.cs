@@ -65,5 +65,21 @@ namespace GEOWNeg
 
             return res;
         }
+
+        public List<GetPositionsDTO> GetPositions(Int64 idJourney, Int64 idObject)
+        {
+            List<GetPositionsDTO> res = new List<GetPositionsDTO>();
+
+            try
+            {
+                res = _data_reading.GetPositions(idJourney, idObject);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return res.OrderByDescending(dt => dt.dtPosition).ToList();
+        }
     }
 }

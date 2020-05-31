@@ -23,7 +23,9 @@ namespace GEOW
 
         private List<GetJourneysDTO> JourneysActual;
         private List<GetJourneyObjectsDTO> ObjectsActual;
+
         private GetJourneysDTO SelectedJourney;
+        private GetJourneyObjectsDTO SelectedObject;
 
         //control de velocidad
         private GetTotalesDTO Totales;
@@ -211,6 +213,31 @@ namespace GEOW
             }
         }
 
+        private void GetCoordenadas(Int64 idPoint)
+        {
+            
+            var _coordenadas = _obj_negQ.GetPositions(SelectedJourney.idJourney, idPoint); //OJOOOOO
+
+            lstCoordenadas.Items.Clear();
+            lblCoordenadas.Text = "Coordenadas (" + _coordenadas.Count.ToString() + ")";
+
+            foreach (GetPositionsDTO _pos in _coordenadas)
+            {
+                ListViewItem lstIt = new ListViewItem(_pos.dtPosition.ToShortDateString() + " " + _pos.dtPosition.ToLongTimeString());
+                lstIt.SubItems.Add(_pos.X.ToString());
+                lstIt.SubItems.Add(_pos.Y.ToString());
+
+                lstIt.Tag = _pos;
+
+                lstCoordenadas.Items.Add(lstIt);
+            }
+
+            //if (ObjectsActual == null || !_objects.SequenceEqual(ObjectsActual))
+            //{
+
+            //}
+        }
+
         private void GetTotales()
         {
             GetTotalesDTO _totales = _obj_negQ.GetTotales();
@@ -279,6 +306,24 @@ namespace GEOW
         private void timerTotales_Tick(object sender, EventArgs e)
         {
             GetTotales();
+        }
+
+        private void lstObjetos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstObjetos.SelectedItems.Count == 1)
+            {
+                foreach (ListViewItem lstIt in lstObjetos.Items)
+                {
+                    lstIt.ForeColor = Color.Black;
+                }
+
+                SelectedObject = (GetJourneyObjectsDTO)lstObjetos.SelectedItems[0].Tag;
+                lstObjetos.SelectedItems[0].ForeColor = Color.Red;
+
+                GetCoordenadas(SelectedObject.idOBJ);
+
+                lstObjetos.SelectedIndices.Clear();
+            }
         }
     }
 }

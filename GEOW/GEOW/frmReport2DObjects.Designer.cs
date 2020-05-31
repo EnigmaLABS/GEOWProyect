@@ -42,11 +42,11 @@
             this.chAlto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chAncho = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTotalCoordenadas = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblCoordenadas = new System.Windows.Forms.Label();
             this.lstCoordenadas = new System.Windows.Forms.ListView();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chFechaCoord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chX = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chY = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timerTrayectos = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -145,6 +145,7 @@
             this.lstObjetos.TabIndex = 4;
             this.lstObjetos.UseCompatibleStateImageBehavior = false;
             this.lstObjetos.View = System.Windows.Forms.View.Details;
+            this.lstObjetos.SelectedIndexChanged += new System.EventHandler(this.lstObjetos_SelectedIndexChanged);
             // 
             // chObjeto
             // 
@@ -171,51 +172,54 @@
             this.chTotalCoordenadas.Text = "Coordenadas";
             this.chTotalCoordenadas.Width = 100;
             // 
-            // label4
+            // lblCoordenadas
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Ravie", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label4.Location = new System.Drawing.Point(719, 406);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(243, 36);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Coordenadas";
+            this.lblCoordenadas.AutoSize = true;
+            this.lblCoordenadas.Font = new System.Drawing.Font("Ravie", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCoordenadas.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lblCoordenadas.Location = new System.Drawing.Point(719, 406);
+            this.lblCoordenadas.Name = "lblCoordenadas";
+            this.lblCoordenadas.Size = new System.Drawing.Size(243, 36);
+            this.lblCoordenadas.TabIndex = 5;
+            this.lblCoordenadas.Text = "Coordenadas";
             // 
             // lstCoordenadas
             // 
+            this.lstCoordenadas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstCoordenadas.BackColor = System.Drawing.SystemColors.Control;
             this.lstCoordenadas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstCoordenadas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
+            this.chFechaCoord,
+            this.chX,
+            this.chY});
+            this.lstCoordenadas.FullRowSelect = true;
             this.lstCoordenadas.HideSelection = false;
             this.lstCoordenadas.Location = new System.Drawing.Point(725, 445);
             this.lstCoordenadas.Name = "lstCoordenadas";
-            this.lstCoordenadas.Size = new System.Drawing.Size(677, 362);
+            this.lstCoordenadas.Size = new System.Drawing.Size(657, 362);
             this.lstCoordenadas.TabIndex = 6;
             this.lstCoordenadas.UseCompatibleStateImageBehavior = false;
             this.lstCoordenadas.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader4
+            // chFechaCoord
             // 
-            this.columnHeader4.Text = "Inicio";
-            this.columnHeader4.Width = 140;
+            this.chFechaCoord.Text = "Fecha";
+            this.chFechaCoord.Width = 300;
             // 
-            // columnHeader5
+            // chX
             // 
-            this.columnHeader5.Text = "Objetos";
-            this.columnHeader5.Width = 140;
+            this.chX.Text = "X";
+            this.chX.Width = 100;
             // 
-            // columnHeader6
+            // chY
             // 
-            this.columnHeader6.Text = "Total coordenadas";
-            this.columnHeader6.Width = 150;
+            this.chY.Text = "Y";
+            this.chY.Width = 100;
             // 
             // timerTrayectos
             // 
-            this.timerTrayectos.Interval = 10000;
+            this.timerTrayectos.Interval = 5000;
             this.timerTrayectos.Tick += new System.EventHandler(this.timerTrayectos_Tick);
             // 
             // label1
@@ -309,7 +313,7 @@
             // timerTotales
             // 
             this.timerTotales.Enabled = true;
-            this.timerTotales.Interval = 15000;
+            this.timerTotales.Interval = 6000;
             this.timerTotales.Tick += new System.EventHandler(this.timerTotales_Tick);
             // 
             // lblVelocidad
@@ -350,7 +354,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lstCoordenadas);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblCoordenadas);
             this.Controls.Add(this.lstObjetos);
             this.Controls.Add(this.lblObjetos);
             this.Controls.Add(this.label2);
@@ -380,11 +384,8 @@
         private System.Windows.Forms.ColumnHeader chObjeto;
         private System.Windows.Forms.ColumnHeader chColor;
         private System.Windows.Forms.ColumnHeader chAlto;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblCoordenadas;
         private System.Windows.Forms.ListView lstCoordenadas;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader chAncho;
         private System.Windows.Forms.ColumnHeader chTotalCoordenadas;
         private System.Windows.Forms.Timer timerTrayectos;
@@ -399,5 +400,8 @@
         private System.Windows.Forms.Timer timerTotales;
         private System.Windows.Forms.Label lblVelocidad;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ColumnHeader chFechaCoord;
+        private System.Windows.Forms.ColumnHeader chX;
+        private System.Windows.Forms.ColumnHeader chY;
     }
 }

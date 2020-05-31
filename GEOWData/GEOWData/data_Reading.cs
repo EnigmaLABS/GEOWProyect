@@ -122,5 +122,42 @@ namespace GEOWData
 
             return res;
         }
+
+        public List<GetPositionsDTO> GetPositions(Int64 idJourney, Int64 idObject)
+        {
+            List<GetPositionsDTO> res = new List<GetPositionsDTO>();
+
+            SqlConnection cnx = new SqlConnection(cnx_str);
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Connection = cnx;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "[read].GetPositions";
+
+            cmd.Parameters.AddWithValue("@idJourney", idJourney);
+            cmd.Parameters.AddWithValue("@idObject", idObject);
+
+            cnx.Open();
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                GetPositionsDTO _pos = new GetPositionsDTO()
+                {
+                    dtPosition = DateTime.Parse(reader["dtPosition"].ToString()),
+                    X = int.Parse(reader["X"].ToString()),
+                    Y = int.Parse(reader["Y"].ToString())
+                };
+
+                res.Add(_pos);
+            }
+
+            reader.Close();
+
+            cnx.Close();
+
+            return res;
+        }
     }
 }

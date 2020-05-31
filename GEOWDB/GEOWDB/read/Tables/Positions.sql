@@ -14,8 +14,16 @@
 
 
 
+
+
 GO
 CREATE NONCLUSTERED INDEX [IX_Journeys]
     ON [read].[Positions]([idJourney] ASC)
     INCLUDE([idPoint]);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_Positions]
+    ON [read].[Positions]([idJourney] ASC, [idPoint] ASC)
+    INCLUDE([X], [Y], [dtPosition]);
 
