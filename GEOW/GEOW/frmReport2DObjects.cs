@@ -232,9 +232,10 @@ namespace GEOW
                 lstCoordenadas.Items.Add(lstIt);
             }
 
+            //TODO: Actualizar las coordenadas entrantes del objeto seleccionado
+
             //if (ObjectsActual == null || !_objects.SequenceEqual(ObjectsActual))
             //{
-
             //}
         }
 
@@ -268,7 +269,7 @@ namespace GEOW
                 {
                     vecescero++;
 
-                    if (vecescero == 3)
+                    if (vecescero > 8)
                     {
                         vecescero = 0;
 

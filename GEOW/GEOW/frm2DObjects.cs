@@ -72,8 +72,6 @@ namespace GEOW
         private void trackBarVelocidad_Scroll(object sender, EventArgs e)
         {
             timerAnimacion.Interval = trackBarVelocidad.Value;
-
-            //picOut.Focus();
         }
 
         private void lstInfo_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,7 +91,7 @@ namespace GEOW
                 panelControlDireccion.Visible = true;
             }
 
-            picOut.Focus();
+            cmdArriba.Focus();
         }
 
         private void chkActivo_CheckedChanged(object sender, EventArgs e)
@@ -115,8 +113,6 @@ namespace GEOW
 
         private void chkTraza_CheckedChanged(object sender, EventArgs e)
         {
-            picOut.Focus();
-
             if (Grabando)
             {
                 ActionRecord.CambioTraza();
@@ -125,13 +121,15 @@ namespace GEOW
 
         private void chkCambios_CheckedChanged(object sender, EventArgs e)
         {
-            picOut.Focus();
-
             if (Grabando)
             {
                 ActionRecord.CambioPosicion();
             }
+        }
 
+        private void chkVisible_CheckedChanged(object sender, EventArgs e)
+        {
+            picOut.Visible = chkVisible.Checked;
         }
 
         private void frm2DObjects_KeyDown(object sender, KeyEventArgs e)
@@ -403,8 +401,6 @@ namespace GEOW
 
             Thread.Sleep(100);
             Application.DoEvents();
-
-            picOut.Focus();
         }
 
         private void Desactiva()
@@ -521,7 +517,10 @@ namespace GEOW
 
             foreach (PointObj _obj in OBJETOS)
             {
-                _Hoja.DrawRectangle(_obj.PenObj, _obj.X, _obj.Y, _obj.Ancho, _obj.Alto);
+                if (picOut.Visible)
+                {
+                    _Hoja.DrawRectangle(_obj.PenObj, _obj.X, _obj.Y, _obj.Ancho, _obj.Alto);
+                }
 
                 PintaCoordenadas(_obj.NombreObjeto, _obj.X, _obj.Y);
 
@@ -549,7 +548,6 @@ namespace GEOW
                 lblTotalObjetos.Text = OBJETOS.Count.ToString();
 
                 lstInfo.SelectedIndices.Clear();
-                picOut.Focus();
             }           
         }
 
@@ -588,7 +586,6 @@ namespace GEOW
         }
 
         #endregion
-
 
     }
 }

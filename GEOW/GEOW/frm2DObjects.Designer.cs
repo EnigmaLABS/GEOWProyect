@@ -79,6 +79,7 @@
             this.timerObjetos = new System.Windows.Forms.Timer(this.components);
             this.timerCambiosDireccion = new System.Windows.Forms.Timer(this.components);
             this.timerTransferPositions = new System.Windows.Forms.Timer(this.components);
+            this.chkVisible = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -101,6 +102,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.chkVisible);
             this.splitContainer1.Panel2.Controls.Add(this.cmdConsultas);
             this.splitContainer1.Panel2.Controls.Add(this.cmdGrabar);
             this.splitContainer1.Panel2.Controls.Add(this.lblGrabando);
@@ -155,7 +157,7 @@
             this.cmdConsultas.Location = new System.Drawing.Point(252, 785);
             this.cmdConsultas.Name = "cmdConsultas";
             this.cmdConsultas.Size = new System.Drawing.Size(95, 34);
-            this.cmdConsultas.TabIndex = 50;
+            this.cmdConsultas.TabIndex = 17;
             this.cmdConsultas.Text = "Consultas";
             this.cmdConsultas.UseVisualStyleBackColor = true;
             this.cmdConsultas.Click += new System.EventHandler(this.cmdConsultas_Click);
@@ -166,7 +168,7 @@
             this.cmdGrabar.Location = new System.Drawing.Point(252, 705);
             this.cmdGrabar.Name = "cmdGrabar";
             this.cmdGrabar.Size = new System.Drawing.Size(95, 34);
-            this.cmdGrabar.TabIndex = 49;
+            this.cmdGrabar.TabIndex = 15;
             this.cmdGrabar.Text = "Inicia grabación";
             this.cmdGrabar.UseVisualStyleBackColor = true;
             this.cmdGrabar.Click += new System.EventHandler(this.cmdGrabar_Click);
@@ -217,7 +219,7 @@
             this.cmdIzquierda.Location = new System.Drawing.Point(48, 42);
             this.cmdIzquierda.Name = "cmdIzquierda";
             this.cmdIzquierda.Size = new System.Drawing.Size(55, 34);
-            this.cmdIzquierda.TabIndex = 18;
+            this.cmdIzquierda.TabIndex = 20;
             this.cmdIzquierda.Text = "<-";
             this.cmdIzquierda.UseVisualStyleBackColor = true;
             this.cmdIzquierda.Click += new System.EventHandler(this.cmdIzquierda_Click);
@@ -228,7 +230,7 @@
             this.cmdDerecha.Location = new System.Drawing.Point(170, 42);
             this.cmdDerecha.Name = "cmdDerecha";
             this.cmdDerecha.Size = new System.Drawing.Size(55, 34);
-            this.cmdDerecha.TabIndex = 19;
+            this.cmdDerecha.TabIndex = 21;
             this.cmdDerecha.Text = "->";
             this.cmdDerecha.UseVisualStyleBackColor = true;
             this.cmdDerecha.Click += new System.EventHandler(this.cmdDerecha_Click);
@@ -239,7 +241,7 @@
             this.cmdAbajo.Location = new System.Drawing.Point(109, 67);
             this.cmdAbajo.Name = "cmdAbajo";
             this.cmdAbajo.Size = new System.Drawing.Size(55, 34);
-            this.cmdAbajo.TabIndex = 20;
+            this.cmdAbajo.TabIndex = 22;
             this.cmdAbajo.Text = "DWN";
             this.cmdAbajo.UseVisualStyleBackColor = true;
             this.cmdAbajo.Click += new System.EventHandler(this.cmdAbajo_Click);
@@ -250,7 +252,7 @@
             this.cmdArriba.Location = new System.Drawing.Point(109, 27);
             this.cmdArriba.Name = "cmdArriba";
             this.cmdArriba.Size = new System.Drawing.Size(55, 34);
-            this.cmdArriba.TabIndex = 17;
+            this.cmdArriba.TabIndex = 19;
             this.cmdArriba.Text = "UP";
             this.cmdArriba.UseVisualStyleBackColor = true;
             this.cmdArriba.Click += new System.EventHandler(this.cmdArriba_Click);
@@ -261,7 +263,7 @@
             this.cmdEscenarios.Location = new System.Drawing.Point(252, 665);
             this.cmdEscenarios.Name = "cmdEscenarios";
             this.cmdEscenarios.Size = new System.Drawing.Size(95, 34);
-            this.cmdEscenarios.TabIndex = 15;
+            this.cmdEscenarios.TabIndex = 14;
             this.cmdEscenarios.Text = "Carga escenario";
             this.cmdEscenarios.UseVisualStyleBackColor = true;
             this.cmdEscenarios.Click += new System.EventHandler(this.cmdEscenarios_Click);
@@ -282,7 +284,7 @@
             this.cmdComportamiento.Location = new System.Drawing.Point(252, 825);
             this.cmdComportamiento.Name = "cmdComportamiento";
             this.cmdComportamiento.Size = new System.Drawing.Size(95, 34);
-            this.cmdComportamiento.TabIndex = 16;
+            this.cmdComportamiento.TabIndex = 18;
             this.cmdComportamiento.Text = "Comportamiento";
             this.cmdComportamiento.UseVisualStyleBackColor = true;
             this.cmdComportamiento.Visible = false;
@@ -294,7 +296,7 @@
             this.cmdClean.Location = new System.Drawing.Point(252, 745);
             this.cmdClean.Name = "cmdClean";
             this.cmdClean.Size = new System.Drawing.Size(95, 34);
-            this.cmdClean.TabIndex = 13;
+            this.cmdClean.TabIndex = 16;
             this.cmdClean.Text = "Elimina objetos";
             this.cmdClean.UseVisualStyleBackColor = true;
             this.cmdClean.Click += new System.EventHandler(this.cmdClean_Click);
@@ -552,7 +554,7 @@
             this.trackBarVelocidad.Minimum = 40;
             this.trackBarVelocidad.Name = "trackBarVelocidad";
             this.trackBarVelocidad.Size = new System.Drawing.Size(254, 45);
-            this.trackBarVelocidad.TabIndex = 3;
+            this.trackBarVelocidad.TabIndex = 4;
             this.trackBarVelocidad.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarVelocidad.Value = 100;
             this.trackBarVelocidad.Scroll += new System.EventHandler(this.trackBarVelocidad_Scroll);
@@ -595,6 +597,19 @@
             this.timerTransferPositions.Enabled = true;
             this.timerTransferPositions.Interval = 30000;
             this.timerTransferPositions.Tick += new System.EventHandler(this.timerTransferPositions_Tick);
+            // 
+            // chkVisible
+            // 
+            this.chkVisible.AutoSize = true;
+            this.chkVisible.Checked = true;
+            this.chkVisible.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkVisible.Location = new System.Drawing.Point(231, 35);
+            this.chkVisible.Name = "chkVisible";
+            this.chkVisible.Size = new System.Drawing.Size(56, 17);
+            this.chkVisible.TabIndex = 3;
+            this.chkVisible.Text = "Visible";
+            this.chkVisible.UseVisualStyleBackColor = true;
+            this.chkVisible.CheckedChanged += new System.EventHandler(this.chkVisible_CheckedChanged);
             // 
             // frm2DObjects
             // 
@@ -676,6 +691,7 @@
         private System.Windows.Forms.Button cmdGrabar;
         private System.Windows.Forms.Timer timerTransferPositions;
         private System.Windows.Forms.Button cmdConsultas;
+        private System.Windows.Forms.CheckBox chkVisible;
     }
 }
 
