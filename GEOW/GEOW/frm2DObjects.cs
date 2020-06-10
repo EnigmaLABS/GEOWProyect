@@ -13,6 +13,8 @@ using GEOWObj.contracts;
 using GEOWNeg;
 
 using GEOWData;
+using System.Net.Sockets;
+using System.Net;
 
 namespace GEOW
 {
@@ -44,6 +46,8 @@ namespace GEOW
 
         private void frm2DObjects_Load(object sender, EventArgs e)
         {
+            //this.WindowState = FormWindowState.Maximized;
+
             Application.DoEvents();
 
             _Hoja = picOut.CreateGraphics();
@@ -54,6 +58,8 @@ namespace GEOW
             LoadScenario(scenario.scenario_base.enumEscenarios.scenario_2_tamanhosdistintos_total_5xNum);
 
             timerObjetos.Enabled = true;
+
+            
         }
 
         private void frm2DObjects_FormClosing(object sender, FormClosingEventArgs e)
@@ -316,6 +322,22 @@ namespace GEOW
 
         private void cmdConsultas_Click(object sender, EventArgs e)
         {
+
+            var client = new UdpClient();
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11000); // endpoint where server is listening
+            client.Connect(ep);
+
+            // send data
+            client.Send(new byte[] { 1, 2, 3, 4, 5 }, 5);
+
+            //// then receive data
+            //var receivedData = client.Receive(ref ep);
+
+            //Console.Write("receive data from " + ep.ToString());
+
+            //Console.Read();
+
+
             frmReport2DObjects _frm = new frmReport2DObjects();
             _frm.Show();
         }
@@ -384,6 +406,9 @@ namespace GEOW
         private void FinalizaGrabacionPosiciones()
         {
             _negobjectbuffer.Flush();
+
+            //Finaliza Journey
+            _negjourney.End(_IdJourney);
         }
 
         private void TransferPositionsToReadModel()

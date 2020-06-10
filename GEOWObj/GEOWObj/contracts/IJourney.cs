@@ -9,5 +9,6 @@ namespace GEOWObj.contracts
     public interface IJourney
     {
         Int64 New();
+        bool End(Int64 idJourney);
     }
 }

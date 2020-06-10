@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm2DObjects));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.picOut = new System.Windows.Forms.PictureBox();
+            this.chkVisible = new System.Windows.Forms.CheckBox();
             this.cmdConsultas = new System.Windows.Forms.Button();
             this.cmdGrabar = new System.Windows.Forms.Button();
             this.lblGrabando = new System.Windows.Forms.Label();
@@ -79,7 +80,6 @@
             this.timerObjetos = new System.Windows.Forms.Timer(this.components);
             this.timerCambiosDireccion = new System.Windows.Forms.Timer(this.components);
             this.timerTransferPositions = new System.Windows.Forms.Timer(this.components);
-            this.chkVisible = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -150,6 +150,19 @@
             this.picOut.Size = new System.Drawing.Size(1114, 1007);
             this.picOut.TabIndex = 1;
             this.picOut.TabStop = false;
+            // 
+            // chkVisible
+            // 
+            this.chkVisible.AutoSize = true;
+            this.chkVisible.Checked = true;
+            this.chkVisible.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkVisible.Location = new System.Drawing.Point(231, 35);
+            this.chkVisible.Name = "chkVisible";
+            this.chkVisible.Size = new System.Drawing.Size(56, 17);
+            this.chkVisible.TabIndex = 3;
+            this.chkVisible.Text = "Visible";
+            this.chkVisible.UseVisualStyleBackColor = true;
+            this.chkVisible.CheckedChanged += new System.EventHandler(this.chkVisible_CheckedChanged);
             // 
             // cmdConsultas
             // 
@@ -598,19 +611,6 @@
             this.timerTransferPositions.Interval = 30000;
             this.timerTransferPositions.Tick += new System.EventHandler(this.timerTransferPositions_Tick);
             // 
-            // chkVisible
-            // 
-            this.chkVisible.AutoSize = true;
-            this.chkVisible.Checked = true;
-            this.chkVisible.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkVisible.Location = new System.Drawing.Point(231, 35);
-            this.chkVisible.Name = "chkVisible";
-            this.chkVisible.Size = new System.Drawing.Size(56, 17);
-            this.chkVisible.TabIndex = 3;
-            this.chkVisible.Text = "Visible";
-            this.chkVisible.UseVisualStyleBackColor = true;
-            this.chkVisible.CheckedChanged += new System.EventHandler(this.chkVisible_CheckedChanged);
-            // 
             // frm2DObjects
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -621,7 +621,6 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frm2DObjects";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2D Scenes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm2DObjects_FormClosing);

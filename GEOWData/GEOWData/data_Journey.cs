@@ -34,5 +34,25 @@ namespace GEOWData
 
             return idjourney;
         }
+
+        public bool End(Int64 idJourney)
+        {
+            Int64 idjourney = 0;
+
+            SqlConnection cnx = new SqlConnection(cnx_str);
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Connection = cnx;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "EndJourney";
+
+            cmd.Parameters.AddWithValue("@idJourney", idJourney);
+
+            cnx.Open();
+            cmd.ExecuteScalar();
+            cnx.Close();
+
+            return true;
+        }
     }
 }

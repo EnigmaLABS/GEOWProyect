@@ -33,5 +33,21 @@ namespace GEOWNeg
 
             return res;
         }
+
+        public bool End(Int64 idJourney)
+        {
+            bool res = true;
+
+            try
+            {
+                res = _data_journey.End(idJourney);
+            }
+            catch (Exception ex)
+            {
+                res = false;
+            }
+
+            return res;
+        }
     }
 }
