@@ -99,6 +99,7 @@
     <Build Include="read\Stored Procedures\GetJourneys.sql" />
     <Build Include="read\Stored Procedures\GetJourneyObjects.sql" />
     <Build Include="read\Stored Procedures\GetPositions.sql" />
+    <Build Include="dbo\Stored Procedures\EndJourney.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="comparer\DB to Proyect.scmp" />
