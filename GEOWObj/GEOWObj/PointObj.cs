@@ -5,8 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Newtonsoft;
+using Newtonsoft.Json;
+
 namespace GEOWObj
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class PointObj
     {
         public enum enumDireccion { Derecha = 1, Izquierda = 2, Arriba = 3, Abajo = 4 }
@@ -24,7 +28,8 @@ namespace GEOWObj
 
         //dependencias
         private contracts.INeg_BufferPositions _negObj;
-        
+        private contracts.INeg_UDPClient _negUDPObj;
+
         #region privadas - propiedades
 
         private int _x;
@@ -39,7 +44,14 @@ namespace GEOWObj
         #endregion
 
         //comportamiento estandar
-        public PointObj(Color PenColor, int X_Ini, int Y_ini, int Alto, int Ancho, enumDireccion DireccionInicial, int AnchoLienzo, int AltoLienzo, string Nombre, contracts.INeg_BufferPositions p_negObj)
+        public PointObj(Color PenColor, 
+                        int X_Ini, int Y_ini, 
+                        int Alto, int Ancho, 
+                        enumDireccion DireccionInicial, 
+                        int AnchoLienzo, int AltoLienzo, 
+                        string Nombre, 
+                        contracts.INeg_BufferPositions p_negObj,
+                        contracts.INeg_UDPClient p_negUDPObj)
         {
             this.PenObj = new Pen(PenColor);
 
@@ -56,10 +68,19 @@ namespace GEOWObj
             AltoLimite = AltoLienzo - Alto - 55;
 
             _negObj = p_negObj;
+            _negUDPObj = p_negUDPObj;
         }
 
         //comportamiento Persecucion 
-        public PointObj(Color PenColor, int X_Ini, int Y_ini, int Alto, int Ancho, enumDireccion DireccionInicial, int AnchoLienzo, int AltoLienzo, string Nombre, bool esLider, bool esPerseguidor, contracts.INeg_BufferPositions p_negObj)
+        public PointObj(Color PenColor, 
+                        int X_Ini, int Y_ini, 
+                        int Alto, int Ancho, 
+                        enumDireccion DireccionInicial, 
+                        int AnchoLienzo, int AltoLienzo, 
+                        string Nombre, 
+                        bool esLider, bool esPerseguidor, 
+                        contracts.INeg_BufferPositions p_negObj,
+                        contracts.INeg_UDPClient p_negUDPObj)
         {
             this.PenObj = new Pen(PenColor);
 
@@ -79,6 +100,7 @@ namespace GEOWObj
             this.EsPerseguidor = esPerseguidor;
 
             _negObj = p_negObj;
+            _negUDPObj = p_negUDPObj;
         }
 
         public enumDireccion Direccion
@@ -134,6 +156,7 @@ namespace GEOWObj
             }
         }
 
+        [JsonProperty]
         public int X
         {
             get
@@ -161,6 +184,7 @@ namespace GEOWObj
                     //Graba la posición
                     DTO.InsertPositionDTO _pos = new DTO.InsertPositionDTO()
                     {
+                        CreateDate = DateTime.Now,
                         GUIDObject = this.GUIDObject,
                         PointDesc = this.nombreobjeto,
                         X = _x,
@@ -173,10 +197,16 @@ namespace GEOWObj
 
                     Task _recordposition = new Task(() => _negObj.InsertPosition(_pos));
                     _recordposition.Start();
+
+                    //Serializa y envía objeto vía UDP
+                    string str_object = JsonConvert.SerializeObject(_pos);
+                    Task _sendposition = new Task(() => _negUDPObj.EnviarMensaje(str_object));
+                    _sendposition.Start();
                 }
             }
         }
 
+        [JsonProperty]
         public int Y
         {
             get
@@ -203,6 +233,7 @@ namespace GEOWObj
                     //Graba la posición
                     DTO.InsertPositionDTO _pos = new DTO.InsertPositionDTO()
                     {
+                        CreateDate = DateTime.Now,
                         GUIDObject = this.GUIDObject,
                         PointDesc = this.nombreobjeto,
                         X = this.X,
@@ -216,10 +247,17 @@ namespace GEOWObj
                     Task _recordposition = new Task(() => _negObj.InsertPosition(_pos));
                     _recordposition.Start();
 
+                    //Serializa y envía objeto vía UDP
+                    string str_object = JsonConvert.SerializeObject(_pos);
+
+                    Task _sendposition = new Task(() => _negUDPObj.EnviarMensaje(str_object));
+                    _sendposition.Start();
+
                 }
             }
         }
 
+        [JsonProperty]
         public string GUIDObject
         {
             get
@@ -369,7 +407,6 @@ namespace GEOWObj
                     }
                 }
             }
-
         }
 
         #endregion

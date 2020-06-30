@@ -16,18 +16,20 @@ namespace GEOW.subforms
     {
         private frm2DObjects _container;
         private INeg_BufferPositions _negobj;
+        private INeg_UDPClient _negudpobj;
 
-        public frmGetEscenario(frm2DObjects p_container, INeg_BufferPositions p_negobj)
+        public frmGetEscenario(frm2DObjects p_container, INeg_BufferPositions p_negobj, INeg_UDPClient p_negudpobj)
         {
             InitializeComponent();
 
             _container = p_container;
             _negobj = p_negobj;
+            _negudpobj = p_negudpobj;
         }
 
         private void frmGetEscenario_Load(object sender, EventArgs e)
         {
-            scenario.scenario_base _sb = new scenario.scenario_base(0, 0, 0, _negobj);
+            scenario.scenario_base _sb = new scenario.scenario_base(0, 0, 0, _negobj, _negudpobj);
 
             foreach (string esc in _sb.getEscenas())
             {

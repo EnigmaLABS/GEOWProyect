@@ -33,6 +33,7 @@ namespace GEOW
 
         private INeg_BufferPositions _negobjectbuffer = new Neg_BufferPositions(1000, RecordingDataObj);
         private INeg_Journey _negjourney = new Neg_Journey(JourneyDataObj);
+        private INeg_UDPClient _negudpclient = new Neg_UDPClient();
 
         private Color SelectedColor = Color.Black;
 
@@ -258,7 +259,7 @@ namespace GEOW
                                                 alto, ancho,
                                                 _direccion,
                                                 picOut.Width, picOut.Height,
-                                                nombre, _negobjectbuffer);
+                                                nombre, _negobjectbuffer, _negudpclient);
 
                     newobjects.Add(_point);
                 }
@@ -290,7 +291,7 @@ namespace GEOW
 
         private void cmdEscenarios_Click(object sender, EventArgs e)
         {
-            subforms.frmGetEscenario _frmEscenarios = new subforms.frmGetEscenario(this, _negobjectbuffer);
+            subforms.frmGetEscenario _frmEscenarios = new subforms.frmGetEscenario(this, _negobjectbuffer, _negudpclient);
             _frmEscenarios.ShowDialog();
         }
 
@@ -356,19 +357,19 @@ namespace GEOW
             {
                 case scenario.scenario_base.enumEscenarios.scenario_1_tamanhosiguales_total_5xNum:
 
-                    sc = new scenario.scenario_1_tamanhosiguales_total_5xNum(picOut.Height, picOut.Width, 0, _negobjectbuffer);
+                    sc = new scenario.scenario_1_tamanhosiguales_total_5xNum(picOut.Height, picOut.Width, 0, _negobjectbuffer, _negudpclient);
                     OBJETOS.AddRange(sc.Get(33));
                     break;
 
                 case scenario.scenario_base.enumEscenarios.scenario_2_tamanhosdistintos_total_5xNum:
 
-                    sc = new scenario.scenario_2_tamanhosdistintos_total_5xNum(picOut.Height, picOut.Width, 0, _negobjectbuffer);
+                    sc = new scenario.scenario_2_tamanhosdistintos_total_5xNum(picOut.Height, picOut.Width, 0, _negobjectbuffer, _negudpclient);
                     OBJETOS.AddRange(sc.Get(33));
                     break;
 
                 case scenario.scenario_base.enumEscenarios.scenario_3_persecucion:
 
-                    sc = new scenario.scenario_3_persecucion(picOut.Height, picOut.Width, 0, _negobjectbuffer);
+                    sc = new scenario.scenario_3_persecucion(picOut.Height, picOut.Width, 0, _negobjectbuffer, _negudpclient);
                     OBJETOS.AddRange(sc.Get());
                     break;
 

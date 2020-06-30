@@ -19,14 +19,16 @@ namespace GEOW.scenario
         public int elementos_existentes;
 
         public INeg_BufferPositions _negobj;
+        public INeg_UDPClient _negudpobj;
 
-        public scenario_base(int p_altoLienzo, int p_anchoLienzo, int p_elementos_existentes, INeg_BufferPositions p_negobj)
+        public scenario_base(int p_altoLienzo, int p_anchoLienzo, int p_elementos_existentes, INeg_BufferPositions p_negobj, INeg_UDPClient p_negudpobj)
         {
             altoLienzo = p_altoLienzo;
             anchoLienzo = p_anchoLienzo;
             elementos_existentes = p_elementos_existentes;
 
             _negobj = p_negobj;
+            _negudpobj = p_negudpobj;
         }
 
         public List<string> getEscenas()

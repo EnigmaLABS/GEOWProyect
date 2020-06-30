@@ -8,6 +8,7 @@ namespace GEOWObj.DTO
 {
     public class InsertPositionDTO
     {
+        public DateTime CreateDate { get; set; }
         public string GUIDObject { get; set; }
         public string PointDesc { get; set; }
 

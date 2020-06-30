@@ -52,11 +52,6 @@ namespace GEOWObj
             _negObj.RecordActions(lstActions);
         }
 
-        //public List<Actions> GetActions()
-        //{
-        //    return lstActions;
-        //}
-
         public void AgregaObjetos(List<PointObj> ObjetosAgregados)
         {
             lstActions.Add(new Actions(enumAcciones.AgregaObjetos)

@@ -9,7 +9,9 @@ namespace GEOW.scenario
 {
     public class scenario_1_tamanhosiguales_total_5xNum : scenario_base
     {
-        public scenario_1_tamanhosiguales_total_5xNum(int p_altoLienzo, int p_anchoLienzo, int p_elementos_existentes, INeg_BufferPositions p_negobj) : base(p_altoLienzo, p_anchoLienzo, p_elementos_existentes, p_negobj)
+        public scenario_1_tamanhosiguales_total_5xNum(int p_altoLienzo, int p_anchoLienzo, int p_elementos_existentes, 
+                                                      INeg_BufferPositions p_negobj,
+                                                      INeg_UDPClient p_negUDPObj) : base(p_altoLienzo, p_anchoLienzo, p_elementos_existentes, p_negobj, p_negUDPObj)
         {
             base.EscenarioActual = enumEscenarios.scenario_1_tamanhosiguales_total_5xNum;
         }
@@ -27,7 +29,7 @@ namespace GEOW.scenario
                                             PointObj.enumDireccion.Derecha,             //dirección
                                             anchoLienzo, altoLienzo,
                                             "cuadrado_negro_4x4_" + (elementos_existentes + cont + 1).ToString(),
-                                            this._negobj
+                                            this._negobj, this._negudpobj
                                             ));
             }
 
@@ -40,7 +42,7 @@ namespace GEOW.scenario
                                             PointObj.enumDireccion.Abajo,               //dirección
                                             anchoLienzo, altoLienzo,
                                             "cuadrado_azul_4x4_" + (elementos_existentes + cont + 1).ToString(),
-                                            this._negobj
+                                            this._negobj, this._negudpobj
                                             ));
             }
 
@@ -53,7 +55,7 @@ namespace GEOW.scenario
                                             PointObj.enumDireccion.Izquierda,           //dirección
                                             anchoLienzo, altoLienzo,
                                             "cuadrado_verde_4x4_" + (elementos_existentes + cont + 1).ToString(),
-                                            this._negobj
+                                            this._negobj, this._negudpobj
                                             ));
             }
 
@@ -66,7 +68,7 @@ namespace GEOW.scenario
                                             PointObj.enumDireccion.Izquierda,           //dirección
                                             anchoLienzo, altoLienzo,
                                             "cuadrado_amarillo_4x4_" + (elementos_existentes + cont + 1).ToString(),
-                                            this._negobj
+                                            this._negobj, this._negudpobj
                                             ));
             }
 
@@ -79,7 +81,7 @@ namespace GEOW.scenario
                                             PointObj.enumDireccion.Derecha,             //dirección
                                             anchoLienzo, altoLienzo,
                                             "cuadrado_rojo_4x4_" + (elementos_existentes + cont + 1).ToString(),
-                                            this._negobj
+                                            this._negobj, this._negudpobj
                                             ));
             }
 

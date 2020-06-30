@@ -9,7 +9,11 @@ namespace GEOW.scenario
 {
     public class scenario_3_persecucion : scenario_base
     {
-        public scenario_3_persecucion(int p_altoLienzo, int p_anchoLienzo, int p_elementos_existentes, INeg_BufferPositions p_negobj) : base(p_altoLienzo, p_anchoLienzo, p_elementos_existentes, p_negobj)
+
+        public scenario_3_persecucion(int p_altoLienzo, int p_anchoLienzo, int p_elementos_existentes, 
+                                      INeg_BufferPositions p_negobj,
+                                      INeg_UDPClient p_negUDPObj
+                                      ) : base(p_altoLienzo, p_anchoLienzo, p_elementos_existentes, p_negobj, p_negUDPObj)
         {
             base.EscenarioActual = enumEscenarios.scenario_3_persecucion;
         }
@@ -23,35 +27,35 @@ namespace GEOW.scenario
                                             20, 20,                                 //alto-ancho
                                             PointObj.enumDireccion.Derecha,         //dirección
                                             anchoLienzo, altoLienzo,
-                                            "control", true, false, this._negobj));
+                                            "control", true, false, this._negobj, this._negudpobj));
 
             res.Add(new PointObj(Color.Red,                                         //color
                                         800, 500,                                   //pos inicial X-Y
                                         20, 20,                                     //alto-ancho
                                         PointObj.enumDireccion.Abajo,               //dirección
                                         anchoLienzo, altoLienzo,
-                                        "perseguidor_" + (elementos_existentes + 2).ToString(), false, true, this._negobj));
+                                        "perseguidor_" + (elementos_existentes + 2).ToString(), false, true, this._negobj, this._negudpobj));
 
             res.Add(new PointObj(Color.Red,                                         //color
                             800, 500,                                               //pos inicial X-Y
                             20, 20,                                                 //alto-ancho
                             PointObj.enumDireccion.Arriba,                          //dirección
                             anchoLienzo, altoLienzo,
-                            "perseguidor_" + (elementos_existentes + 3).ToString(), false, true, this._negobj));
+                            "perseguidor_" + (elementos_existentes + 3).ToString(), false, true, this._negobj, this._negudpobj));
 
             res.Add(new PointObj(Color.Red,                                         //color
                             800, 500,                                               //pos inicial X-Y
                             20, 20,                                                 //alto-ancho
                             PointObj.enumDireccion.Derecha,                         //dirección
                              anchoLienzo, altoLienzo,
-                            "perseguidor_" + (elementos_existentes + 4).ToString(), false, true, this._negobj));
+                            "perseguidor_" + (elementos_existentes + 4).ToString(), false, true, this._negobj, this._negudpobj));
 
             res.Add(new PointObj(Color.Red,                                         //color
                             800, 500,                                               //pos inicial X-Y
                             20, 20,                                                 //alto-ancho
                             PointObj.enumDireccion.Izquierda,                       //dirección
                             anchoLienzo, altoLienzo,
-                            "perseguidor_" + (elementos_existentes + 5).ToString(), false,  true, this._negobj));
+                            "perseguidor_" + (elementos_existentes + 5).ToString(), false,  true, this._negobj, this._negudpobj));
 
 
 
